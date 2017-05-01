@@ -8,11 +8,18 @@ const lines = fs.readFileSync(process.argv[3]).toString()
 
 const map = new Map();
 
-lines.forEach((line) => {
-  const words = line.toLowerCase().replace(/[^a-z\s']+/g, '')
+const uniqueLines = new Set();
+lines.map((line) => {
+  return line.toLowerCase().replace(/[^a-z\s']+/g, '')
                     .trim()
-                    .replace(/^'+|'+$/g, '')
-                    .split(/\s+/g);
+                    .replace(/^'+|'+$/g, '');
+}).filter(line => line).forEach((line) => {
+  uniqueLines.add(line);
+});
+console.error('Number of unique lines: %d', uniqueLines.size);
+
+uniqueLines.forEach((line) => {
+  const words = line.split(/\s+/g);
 
   const allKnown = words.every(word => dict.hasOwnProperty(word));
   if (!allKnown)
