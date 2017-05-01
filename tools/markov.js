@@ -11,6 +11,7 @@ const map = new Map();
 lines.forEach((line) => {
   const words = line.toLowerCase().replace(/[^a-z\s']+/g, '')
                     .trim()
+                    .replace(/^'+|'+$/g, '')
                     .split(/\s+/g);
 
   const allKnown = words.every(word => dict.hasOwnProperty(word));
