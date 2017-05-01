@@ -10,6 +10,9 @@ describe('EntroPoetry', () => {
     const p = new Poetry();
     const buf = Buffer.from('ki7BHAGvJyecFt65WmFiP76hVdZ8RVCewQRV4nTxZMA=',
                             'base64');
-    console.log(p.stringify(buf));
+
+    const str = p.stringify(buf);
+    console.log(str);
+    console.log(p.parse(str));
   });
 });
