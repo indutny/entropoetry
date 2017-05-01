@@ -25,29 +25,49 @@ describe('EntroPoetry', () => {
     assert.deepEqual(p.parse(str), buf);
   });
 
-  it('should autocomplete', () => {
+  it('should do normal autocomplete', () => {
     const p = new Poetry();
     let list;
 
     list = p.autocomplete('');
-    assert(list.some(([ entry ]) => entry === 'seas'));
+    assert(list.some(([ entry ]) => entry === 'upon'));
 
-    list = p.autocomplete('seas');
-    assert(list.some(([ entry ]) => entry === 'south'));
-
-    list = p.autocomplete('south seas');
+    list = p.autocomplete('upon the');
     assert(list.some(([ entry ]) => entry === 'north'));
 
-    list = p.autocomplete('', 'seas');
+    list = p.autocomplete('upon the', 'south');
+    assert(list.some(([ entry ]) => entry === 'north'));
+
+    list = p.autocomplete('upon the north south', 'seize');
+    assert(list.some(([ entry ]) => entry === 'seas'));
+
+    list = p.autocomplete('upon the north south', 'too');
+    assert(!list.some(([ entry ]) => entry === 'seas'));
+  });
+
+  it('should do reverse autocomplete', () => {
+    const p = new Poetry();
+    let list;
+
+    list = p.autocomplete('', null, false);
+    assert(list.some(([ entry ]) => entry === 'seas'));
+
+    list = p.autocomplete('seas', null, false);
+    assert(list.some(([ entry ]) => entry === 'south'));
+
+    list = p.autocomplete('south seas', null, false);
+    assert(list.some(([ entry ]) => entry === 'north'));
+
+    list = p.autocomplete('', 'seas', false);
     assert(list.some(([ entry ]) => entry === 'seize'));
 
-    list = p.autocomplete('seize', 'seas');
+    list = p.autocomplete('seize', 'seas', false);
     assert(list.some(([ entry ]) => entry === 'rather'));
 
-    list = p.autocomplete('upon the north south seas');
+    list = p.autocomplete('upon the north south seas', null, false);
     assert(!list);
 
-    list = p.autocomplete('seas', 'too');
+    list = p.autocomplete('seas', 'too', false);
     assert(!list);
   });
 });

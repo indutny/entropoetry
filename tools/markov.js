@@ -5,6 +5,7 @@ const fs = require('fs');
 const dict = JSON.parse(fs.readFileSync(process.argv[2]).toString());
 const lines = fs.readFileSync(process.argv[3]).toString()
     .split('\n').map(x => x.trim()).filter(x => x);
+const isReverse = process.argv[4] === 'rev';
 
 const map = new Map();
 
@@ -26,7 +27,10 @@ uniqueLines.forEach((line) => {
     return;
 
   let prev = '';
-  words.reverse().forEach((word) => {
+  if (!isReverse)
+    words.reverse();
+
+  words.forEach((word) => {
     // Filter out empty words
     if (!word)
       return;
