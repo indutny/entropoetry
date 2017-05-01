@@ -25,6 +25,24 @@ describe('EntroPoetry', () => {
     assert.deepEqual(p.parse(str), buf);
   });
 
+  it('should stringify/parse with extra padding', () => {
+    const p = new Poetry();
+    const buf = Buffer.from('nXyllFnGW3nDm9LHXoMeCVQqvr56IFTv3i0ZByvb4KQ=',
+                            'base64');
+    const str = p.stringify(buf);
+    assert.equal(str, [
+      'hair had not too great hole',
+      'of course and pride they roll',
+      'he rattled but shook foil',
+      'i bear my soul the toil',
+      'he me why else should ills',
+      'was not my hundred hills',
+      'to fly up from a fate',
+      'had some great'
+    ].join('\n'));
+    assert.deepEqual(p.parse(str), buf);
+  });
+
   it('should do normal autocomplete', () => {
     const p = new Poetry();
     let list;
