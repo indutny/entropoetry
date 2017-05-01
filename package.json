@@ -1,12 +1,15 @@
 {
   "name": "entropoetry",
   "version": "1.0.0-alpha",
-  "description": "",
+  "description": "Entropic Poetry",
   "main": "lib/poetry.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "mocha --reporter=spec test/*-test.js"
   },
-  "keywords": [],
+  "keywords": [ "entropy", "poetry", "entropoetry" ],
   "author": "Fedor Indutny <fedor@indutny.com> (http://darksi.de/)",
   "license": "MIT",
   "dependencies": {
