@@ -56,8 +56,7 @@ Word.prototype.toJSON = function toJSON() {
       return [ s.sound ];
   }
 
-  return [ this.sounds.map(sound), this.stress,
-           this.rhyme.map(({ sound }) => sound) ];
+  return [ this.stress, this.rhyme.map(({ sound }) => sound) ];
 };
 
 const out = {};
