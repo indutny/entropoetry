@@ -22,7 +22,7 @@ const min = {
 };
 
 for (let i = 0; i < 0xffffffff; i++) {
-  const seed = START + i;
+  const seed = (START + i) >>> 0;
   pack.writeUInt32BE(seed, data.length);
 
   const hash = crypto.createHash('sha512').update(pack.slice(0, 4)).digest();
