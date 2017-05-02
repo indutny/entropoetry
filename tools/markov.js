@@ -61,10 +61,10 @@ map.forEach((submap, key) => {
 
   const words = [];
   submap.forEach((count, word) => {
-    words.push({ word, probability: count / total });
+    words.push({ word, count });
   });
-  words.sort((a, b) => b.probability - a.probability);
+  words.sort((a, b) => b.count - a.count);
 
-  out[key] = words.map(({ word, probability }) => [ word, probability ]);
+  out[key] = words.map(({ word, count }) => [ word, count ]);
 });
 console.log(JSON.stringify(out));
