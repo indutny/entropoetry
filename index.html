@@ -1,8 +1,96 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
+
+      #content {
+        width: 640px;
+        padding: 0 32px 32px 32px;
+        margin: 0 auto;
+      }
+
+      h1, h3 {
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 0px;
+      }
+
+      h3 {
+        margin-top: 0px;
+      }
+
+      progress {
+        width: 100%;
+      }
+
+      textarea {
+        width: 100%;
+        height: 120px;
+        font-family: monospace;
+        font-size: 12px;
+      }
+
+      form {
+        width: 100%;
+      }
+
+      form .formgroup {
+        padding: 3px 0;
+      }
+
+      form input {
+        float: right;
+        margin: 0;
+      }
+
+      .important {
+        text-align: center;
+        margin-top: 32px;
+        color: red;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      #loading {
+        text-align: center;
+        margin: 30px;
+      }
+
+      .clear {
+        clear: both;
+      }
+    </style>
+
     <title>Entropoetry</title>
   </head>
   <body>
+    <div id=loading>
+      Loading...
+    </div>
+
+    <div id=content style="display: none">
+      <h1>Entropic Peotry</h1>
+      <div class=textarea-wrap>
+        <label for=key>HEX Private key:</label>
+        <textarea id=key placeholder="Private key" wrap=off></textarea>
+      </div>
+      <div class=textarea-wrap>
+        <label for=poem>Poem:</label>
+        <textarea id=poem placeholder="Poem" wrap=off></textarea>
+      </div>
+
+      <div class=important>
+        <i>Please don't paste real private keys here</i>
+      </div>
+
+      <script src="dist/bundle.js"></script>
+    </div>
   </body>
 </html>
