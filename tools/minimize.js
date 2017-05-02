@@ -28,7 +28,6 @@ for (let i = 0; i < 0xffffffff; i++) {
   const hash = crypto.createHash('sha512').update(pack.slice(0, 4)).digest();
   for (let j = 0; j < data.length; j++)
     pack[j] = data[j] ^ hash[j];
-  console.log(pack);
 
   let poem;
   try {
