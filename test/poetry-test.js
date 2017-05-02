@@ -13,14 +13,14 @@ describe('EntroPoetry', () => {
 
     const str = p.stringify(buf);
     assert.equal(str, [
-      'upon the north south seas',
-      'gods may say rather seize',
-      'the spring breeze chirps and farms',
-      'of coal his mother\'s arms',
-      'men might he never stoops',
-      'bones through the slight his troops',
-      'shall just how they pursue',
-      'word then they will too'
+      'you still subject and sage',
+      'with dole and wipe the rage',
+      'spot where he shows your fame',
+      'must soon who chose the flame',
+      'that they had gathered cones',
+      'of thunder from the groans',
+      'day when a broken heart',
+      'maiden who where art'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });
@@ -31,14 +31,13 @@ describe('EntroPoetry', () => {
                             'base64');
     const str = p.stringify(buf);
     assert.equal(str, [
-      'hair had not too great hole',
-      'of course and pride they roll',
-      'he rattled but shook foil',
-      'i bear my soul the toil',
-      'he me why else should ills',
-      'was not my hundred hills',
-      'to fly up from a fate',
-      'had some great'
+      'this world that shift to come',
+      'woe all that pause and thumb',
+      'and care may be no wind',
+      'wings how could catch you kind',
+      'poor fellow\'s face and moon',
+      'but it the sight o\' june',
+      'pulse he got her mind'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });

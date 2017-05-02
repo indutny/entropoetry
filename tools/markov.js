@@ -19,6 +19,7 @@ lines.map((line) => {
 });
 console.error('Number of unique lines: %d', uniqueLines.size);
 
+let linesParsed = 0;
 uniqueLines.forEach((line) => {
   const words = line.split(/\s+/g);
 
@@ -48,7 +49,10 @@ uniqueLines.forEach((line) => {
       submap.set(word, 1);
     prev = word;
   });
+
+  linesParsed++;
 });
+console.error('Number of lines parsed: %d', linesParsed);
 
 const out = {};
 map.forEach((submap, key) => {
