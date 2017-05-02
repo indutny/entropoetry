@@ -13,29 +13,30 @@ const Poet = require('entropoetry');
 const p = new Poet();
 
 const key = Buffer.from(
-    '9d7ca59459c65b79c39bd2c75e831e09542abebe7a2054efde2d19072bdbe0a4',
+    '1cd543bb7110a3a2ec49cbe0eb321232622f6b3d2abaec57466bae0b4085c9f8',
     'hex');
 
 console.log(p.stringify(key));
 /*
-hair had not too great hole
-of course and pride they roll
-he rattled but shook foil
-i bear my soul the toil
-he me why else should ills
-was not my hundred hills
-to fly up from a fate
-had some great
+    name curves of sod or fright
+    we meet you will all night
+    with you now than of ice
+    stars shine by this chair trice
+    show rounding from the fish
+    alive yet longer wish
+    are ye thus i had died
+    the tide
 */
+
 console.log(p.parse(`
-  hair had not too great hole
-  of course and pride they roll
-  he rattled but shook foil
-  i bear my soul the toil
-  he me why else should ills
-  was not my hundred hills
-  to fly up from a fate
-  had some great
+    name curves of sod or fright
+    we meet you will all night
+    with you now than of ice
+    stars shine by this chair trice
+    show rounding from the fish
+    alive yet longer wish
+    are ye thus i had died
+    the tide
 `));
 ```
 
