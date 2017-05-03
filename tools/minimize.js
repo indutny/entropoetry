@@ -25,9 +25,9 @@ for (let i = 0; i < 0xffffffff; i++) {
   const seed = (Math.random() * 0x100000000) >>> 0;
   if (size === 1)
     pack.writeUInt8(seed & 0xff, data.length);
-  else if (size === 1)
-    pack.writeUInt16BE(seed & 0xffff, data.length);
   else if (size === 2)
+    pack.writeUInt16BE(seed & 0xffff, data.length);
+  else if (size === 3)
     pack.writeUInt32BE(seed, data.length);
 
   tries++;
