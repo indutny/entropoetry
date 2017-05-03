@@ -1,110 +1,100 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>Entropoetry</title>
+    <meta name="description" content="Entropic Poetry generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css?v=9301defcbd67e46626b6cdf750027f33844b7fa3">
     <style>
-      * {
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-      }
-
-      #content {
-        width: 640px;
-        padding: 0 32px 32px 32px;
-        margin: 0 auto;
-      }
-
-      h1, h3 {
-        text-align: center;
-      }
-
-      h1 {
-        margin-bottom: 0px;
-      }
-
-      h3 {
-        margin-top: 0px;
-      }
-
-      progress {
-        width: 100%;
-      }
-
       textarea {
         width: 100%;
-        height: 120px;
-        font-family: monospace;
-        font-size: 12px;
+        border: 1px solid #333;
       }
 
-      form {
-        width: 100%;
-      }
-
-      form .formgroup {
-        padding: 3px 0;
-      }
-
-      form input {
-        float: right;
-        margin: 0;
-      }
-
-      .important {
-        text-align: center;
-        margin-top: 32px;
-        color: red;
-        font-weight: bold;
-        font-size: 12px;
-      }
-
-      #loading {
-        text-align: center;
-        margin: 30px;
-      }
-
-      .clear {
-        clear: both;
+      #poem {
+        height: 220px;
       }
     </style>
-
-    <title>Entropoetry</title>
   </head>
   <body>
-    <div id=loading>
-      Loading...
-    </div>
+    <section class="page-header">
+      <h1 class="project-name">Entropic Poetry</h1>
+      <h2 class="project-tagline">
+        A sane way to remember short binary private keys.
+      </h2>
 
-    <div id=content style="display: none">
+      <a href="https://github.com/indutny/entropoetry" class="btn">View on GitHub</a>
+      <a href="https://www.npmjs.com/package/entropoetry" class="btn">Install from npm</a>
+    </section>
+
+    <section class="main-content">
       <h1>Entropic Poetry</h1>
-      <div class=textarea-wrap>
-        <label for=key>HEX Private key:</label>
-        <textarea id=key placeholder="Private key" wrap=off></textarea>
-      </div>
-      <div class=textarea-wrap>
-        <label for=poem>Poem:</label>
-        <textarea id=poem placeholder="Poem" wrap=off></textarea>
-      </div>
 
-      <div class=description>
-        <p>What is this about?</p>
+      <section id=loading>
+        Please wait while we are loading...
+      </section>
 
-        <p>
-          This tool can convert <i>almost any</i> binary data into a short
-          poem and back. It could be used for easier memorization of 32-byte
-          private keys (ed25519 key, for example)
-        </p>
+      <section id=content style="display: none">
+        <section class=textarea-wrap>
+          <h3>HEX Private key:</h3>
+          <textarea id=key placeholder="Private key" wrap=off></textarea>
+        </section>
 
-        <p>
-          <a href="https://github.com/indutny/entropoetry">Source code</a>
-        </p>
-      </div>
+        <section class=textarea-wrap>
+          <h3>Poem:</h3>
+          <textarea id=poem placeholder="Poem" wrap=off></textarea>
+        </section>
 
-      <div class=important>
-        <i>Please don't paste real private keys here</i>
-      </div>
+        <div class=important>
+          <i>Please don't paste real private keys here</i>
+        </div>
+      </section>
+
+      <h2>What is this about?</h2>
+
+      <p>
+        This tool can convert <i>almost any</i> binary data into a short
+        poem and back. It could be used for easier memorization of 32-byte
+        private keys (ed25519 key, for example)
+      </p>
+
+      <h3>
+        <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LICENSE
+      </h3>
+
+      <p>This software is licensed under the MIT License.</p>
+
+      <p>Copyright Fedor Indutny, 2016.</p>
+
+      <p>Permission is hereby granted, free of charge, to any person obtaining a
+      copy of this software and associated documentation files (the
+      "Software"), to deal in the Software without restriction, including
+      without limitation the rights to use, copy, modify, merge, publish,
+      distribute, sublicense, and/or sell copies of the Software, and to permit
+      persons to whom the Software is furnished to do so, subject to the
+      following conditions:</p>
+
+      <p>The above copyright notice and this permission notice shall be included
+      in all copies or substantial portions of the Software.</p>
+
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+      OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+      NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+      DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+      OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+      USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/gypkg/gypkg">gypkg</a> is maintained by <a href="https://github.com/gypkg">gypkg</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
       <script src="dist/bundle.js"></script>
-    </div>
+    </section>
   </body>
 </html>
