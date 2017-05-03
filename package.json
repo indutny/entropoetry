@@ -9,7 +9,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "bn.js": "^4.11.6",
-    "entropoetry": "^1.0.0-alpha4",
+    "entropoetry": "^1.0.0-alpha5",
     "webpack": "^2.4.1"
   },
   "devDependencies": {
