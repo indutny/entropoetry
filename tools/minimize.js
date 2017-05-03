@@ -44,7 +44,7 @@ for (let i = 0; i < 0xffffffff; i++) {
 
   let poem;
   try {
-    poem = p.stringify(pack);
+    poem = p.stringify(pack.slice(0, data.length + size));
   } catch (e) {
     continue;
   }
