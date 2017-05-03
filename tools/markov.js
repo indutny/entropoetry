@@ -19,13 +19,20 @@ lines.map((line) => {
 });
 console.error('Number of unique lines: %d', uniqueLines.size);
 
+// All words
+const allWords = new Map();
+map.set('*', allWords);
+
+function increment(map, word) {
+  if (map.has(word))
+    map.set(word, map.get(word) + 1);
+  else
+    map.set(word, 1);
+}
+
 let linesParsed = 0;
 uniqueLines.forEach((line) => {
   const words = line.split(/\s+/g);
-
-  const allKnown = words.every(word => dict.hasOwnProperty(word));
-  if (!allKnown)
-    return;
 
   let prev = '';
   if (!isReverse)
@@ -36,6 +43,20 @@ uniqueLines.forEach((line) => {
     if (!word)
       return;
 
+    // Skip unknown words
+    if (!dict.hasOwnProperty(word)) {
+      prev = null;
+      return;
+    }
+
+    increment(allWords, word);
+
+    // Resume after unknown words
+    if (prev === null) {
+      prev = word;
+      return;
+    }
+
     let submap;
     if (map.has(prev)) {
       submap = map.get(prev);
@@ -43,16 +64,13 @@ uniqueLines.forEach((line) => {
       submap = new Map();
       map.set(prev, submap);
     }
-    if (submap.has(word))
-      submap.set(word, submap.get(word) + 1);
-    else
-      submap.set(word, 1);
+    increment(submap, word);
     prev = word;
   });
 
   linesParsed++;
 });
-console.error('Number of lines parsed: %d', linesParsed);
+console.error('Number of words parsed: %d', allWords.size);
 
 const out = {};
 map.forEach((submap, key) => {

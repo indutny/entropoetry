@@ -14,14 +14,14 @@ describe('EntroPoetry', () => {
 
     const str = p.stringify(buf);
     assert.equal(str, [
-      'you still subject and sage',
-      'with dole and wipe the rage',
-      'spot where he shows your fame',
-      'shall soon who chose the flame',
-      'could they had gathered cones',
-      'will stand but one grist stones',
-      'before his lifted dart',
-      'a part'
+      'say hum of blazing sky',
+      'it be found that birds cry',
+      'things let him from her eye',
+      'no pain is passing by',
+      'to grief behold their far',
+      'or who\'d been by their barr',
+      'tradition by despair',
+      'so blest air'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });
@@ -32,13 +32,14 @@ describe('EntroPoetry', () => {
                             'base64');
     const str = p.stringify(buf);
     assert.equal(str, [
-      'this world that shift to come',
-      'woe all that pause and thumb',
-      'or hew those humid wind',
-      'a snuffed the clouds of mind',
-      'rule by the soul with thee',
-      'gift with their guns and he',
-      'fair they got her mind'
+      'we judge not with us try',
+      'to fix upon mount high',
+      'are all culled from bad bump',
+      'less we scarce should go thump',
+      'and scatter all thy stroke',
+      'his throne and keep the joke',
+      'how she rose from afar',
+      'are'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });
@@ -70,7 +71,7 @@ describe('EntroPoetry', () => {
   });
 
   it('should stringify/parse random data', () => {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 30; i++) {
       const p = new Poetry();
       const buf = crypto.randomBytes(32);
 
@@ -78,7 +79,7 @@ describe('EntroPoetry', () => {
       try {
         str = p.stringify(buf);
       } catch (e) {
-        assert(/can\'t rhyme|like this data/i.test(e.message));
+        assert(/can\'t rhyme|no inspiration/i.test(e.message), e.message);
         continue;
       }
 
