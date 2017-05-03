@@ -1,7 +1,5 @@
 # entropoetry
 
-**WORK IN PROGRESS**
-
 Entropic Poet can write an unique poem based on a binary data. Not only this,
 but the Poet can also reconstruct the binary data given the poem.
 
