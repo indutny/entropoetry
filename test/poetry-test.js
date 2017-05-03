@@ -99,4 +99,13 @@ describe('EntroPoetry', () => {
 
     assert.deepEqual(p.parse(p.stringify(buf)), buf);
   });
+
+  it('should stringify/parse all zeroes', () => {
+    const p = new Poetry();
+    const buf = Buffer.from('00000000000000000000000000000000' +
+                                '00000000000000000000000000000000',
+                            'hex');
+
+    assert.deepEqual(p.parse(p.stringify(buf)), buf);
+  });
 });
