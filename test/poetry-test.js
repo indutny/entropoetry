@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assert');
+const crypto = require('crypto');
 const Buffer = require('buffer').Buffer;
 
 const Poetry = require('../');
@@ -66,5 +67,36 @@ describe('EntroPoetry', () => {
 
     list = p.autocomplete('seas', 'too');
     assert(!list);
+  });
+
+  it('should stringify/parse random data', () => {
+    for (let i = 0; i < 10; i++) {
+      const p = new Poetry();
+      const buf = crypto.randomBytes(32);
+
+      let str;
+      try {
+        str = p.stringify(buf);
+      } catch (e) {
+        assert(/can\'t rhyme|like this data/i.test(e.message));
+        continue;
+      }
+
+      const actual = p.parse(str);
+      if (actual.toString('hex') === buf.toString('hex'))
+        continue;
+
+      console.log(buf.toString('hex'));
+      assert.deepEqual(actual, buf);
+    }
+  });
+
+  it('should stringify/parse regression', () => {
+    const p = new Poetry();
+    const buf = Buffer.from('45c35f98488863a730c82fa2eb68196f' +
+                                '680746abc6ec70ac24b7686246b70e3b',
+                            'hex');
+
+    assert.deepEqual(p.parse(p.stringify(buf)), buf);
   });
 });
