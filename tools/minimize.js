@@ -4,8 +4,6 @@ const crypto = require('crypto')
 const Buffer = require('buffer').Buffer;
 const Poet = require('../');
 
-const START = (Math.random() * 0x100000000) >>> 0;
-
 const p = new Poet();
 
 const data = Buffer.from(process.argv[2], 'base64');
@@ -21,11 +19,26 @@ const min = {
   poem: ''
 };
 
+let tries = 0;
+let size = 1;
 for (let i = 0; i < 0xffffffff; i++) {
-  const seed = (START + i) >>> 0;
-  pack.writeUInt32BE(seed, data.length);
+  const seed = (Math.random() * 0x100000000) >>> 0;
+  if (size === 1)
+    pack.writeUInt8(seed & 0xff, data.length);
+  else if (size === 1)
+    pack.writeUInt16BE(seed & 0xffff, data.length);
+  else if (size === 2)
+    pack.writeUInt32BE(seed, data.length);
 
-  const hash = crypto.createHash('sha512').update(pack.slice(0, 4)).digest();
+  tries++;
+  if (tries === 0x100 || tries === 0x10000 || tries === 0x1000000) {
+    size++;
+    console.error('size bump');
+  }
+
+  const hash = crypto.createHash('sha512')
+      .update(pack.slice(data.length, data.length + size))
+      .digest();
   for (let j = 0; j < data.length; j++)
     pack[j] = data[j] ^ hash[j];
 
