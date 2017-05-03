@@ -18,25 +18,25 @@ const key = Buffer.from(
 
 console.log(p.stringify(key));
 /*
-    name curves of sod or fright
-    we meet you will all night
-    with you now than of ice
-    stars shine by this chair trice
-    show rounding from the fish
-    alive yet longer wish
-    are ye thus i had died
-    the tide
+    book what she's slyly smiled
+    on our song is styled
+    without art far they bit
+    own front of which blasts fit
+    mute though one who speaks peace
+    his hired man in greece
+    be sweet child it be called
+    mind recalled
 */
 
 console.log(p.parse(`
-    name curves of sod or fright
-    we meet you will all night
-    with you now than of ice
-    stars shine by this chair trice
-    show rounding from the fish
-    alive yet longer wish
-    are ye thus i had died
-    the tide
+    book what she's slyly smiled
+    on our song is styled
+    without art far they bit
+    own front of which blasts fit
+    mute though one who speaks peace
+    his hired man in greece
+    be sweet child it be called
+    mind recalled
 `));
 ```
 
