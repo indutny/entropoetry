@@ -1,6 +1,6 @@
 {
   "name": "entropoetry",
-  "version": "1.0.0-alpha5",
+  "version": "1.0.0-alpha6",
   "description": "Entropic Poetry",
   "main": "lib/poetry.js",
   "files": [
