@@ -14,14 +14,14 @@ describe('EntroPoetry', () => {
 
     const str = p.stringify(buf);
     assert.equal(str, [
-      'say hum of blazing sky',
-      'it be found that birds cry',
-      'things let him from her eye',
-      'no pain is passing by',
-      'to grief behold their far',
-      'or who\'d been by their barr',
-      'tradition by despair',
-      'so blest air'
+      'accept did yer you lay',
+      'was get more work and play',
+      'of saddle blended fair',
+      'got my head when on air',
+      'in me as my tears my',
+      'avant her startled eye',
+      'consists not love me no',
+      'you\'ll find the kill har o'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });
@@ -32,14 +32,15 @@ describe('EntroPoetry', () => {
                             'base64');
     const str = p.stringify(buf);
     assert.equal(str, [
-      'we judge not with us try',
-      'to fix upon mount high',
-      'are all culled from bad bump',
-      'less we scarce should go thump',
-      'and scatter all thy stroke',
-      'his throne and keep the joke',
-      'how she rose from afar',
-      'are'
+      'and live arose as from',
+      'still pack care was to come',
+      'came down with with way hast',
+      'love i know not how fast',
+      'i think that thou hast not',
+      'remembered may on spot',
+      'they but of sacra al',
+      'the child it is at val',
+      'it known thou'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });
@@ -49,19 +50,19 @@ describe('EntroPoetry', () => {
     let list;
 
     list = p.autocomplete('', null);
-    assert(list.some(([ entry ]) => entry === 'seas'));
+    assert(list.some(([ entry ]) => entry === 'from'));
 
-    list = p.autocomplete('seas', null);
-    assert(list.some(([ entry ]) => entry === 'south'));
+    list = p.autocomplete('from', null);
+    assert(list.some(([ entry ]) => entry === 'as'));
 
-    list = p.autocomplete('south seas', null);
-    assert(list.some(([ entry ]) => entry === 'north'));
+    list = p.autocomplete('as from', null);
+    assert(list.some(([ entry ]) => entry === 'arose'));
 
-    list = p.autocomplete('', 'seas');
-    assert(list.some(([ entry ]) => entry === 'seize'));
+    list = p.autocomplete('', 'from');
+    assert(list.some(([ entry ]) => entry === 'come'));
 
-    list = p.autocomplete('seize', 'seas');
-    assert(list.some(([ entry ]) => entry === 'rather'));
+    list = p.autocomplete('come', 'from');
+    assert(list.some(([ entry ]) => entry === 'to'));
 
     list = p.autocomplete('upon the north south seas', null);
     assert(!list);

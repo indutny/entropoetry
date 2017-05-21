@@ -30,11 +30,23 @@ function increment(map, word) {
     map.set(word, 1);
 }
 
+function dig(map, word) {
+  let submap;
+  if (map.has(word)) {
+    submap = map.get(word);
+  } else {
+    submap = new Map();
+    map.set(word, submap);
+  }
+  return submap;
+}
+
+let pprev = '';
+let prev = '';
 let linesParsed = 0;
 uniqueLines.forEach((line) => {
   const words = line.split(/\s+/g);
 
-  let prev = '';
   if (!isReverse)
     words.reverse();
 
@@ -45,26 +57,17 @@ uniqueLines.forEach((line) => {
 
     // Skip unknown words
     if (!dict.hasOwnProperty(word)) {
-      prev = null;
+      prev = '';
+      pprev = '';
       return;
     }
 
     increment(allWords, word);
 
-    // Resume after unknown words
-    if (prev === null) {
-      prev = word;
-      return;
-    }
-
-    let submap;
-    if (map.has(prev)) {
-      submap = map.get(prev);
-    } else {
-      submap = new Map();
-      map.set(prev, submap);
-    }
+    const submap = dig(map, pprev + ':' + prev);
     increment(submap, word);
+
+    pprev = prev;
     prev = word;
   });
 
@@ -73,12 +76,12 @@ uniqueLines.forEach((line) => {
 console.error('Number of words parsed: %d', allWords.size);
 
 const out = {};
-map.forEach((submap, key) => {
+map.forEach((leaf, key) => {
   let total = 0;
-  submap.forEach(count => total += count);
+  leaf.forEach(count => total += count);
 
   const words = [];
-  submap.forEach((count, word) => {
+  leaf.forEach((count, word) => {
     words.push({ word, count });
   });
   words.sort((a, b) => b.count - a.count);
