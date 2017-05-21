@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const zlib = require('zlib');
 
 const dict = JSON.parse(fs.readFileSync(process.argv[2]).toString());
 const lines = fs.readFileSync(process.argv[3]).toString()
@@ -22,7 +21,7 @@ console.error('Number of unique lines: %d', uniqueLines.size);
 
 // All words
 const allWords = new Map();
-map.set('*', allWords);
+map.set(':', allWords);
 
 function increment(map, word) {
   if (map.has(word))
@@ -48,9 +47,6 @@ let linesParsed = 0;
 uniqueLines.forEach((line) => {
   const words = line.split(/\s+/g);
 
-  if (!isReverse)
-    words.reverse();
-
   words.forEach((word) => {
     // Filter out empty words
     if (!word)
@@ -63,9 +59,9 @@ uniqueLines.forEach((line) => {
       return;
     }
 
-    increment(allWords, word);
-
     const submap = dig(map, pprev + ':' + prev);
+    if (pprev !== ':' && prev !== ':')
+      increment(allWords, word);
     increment(submap, word);
 
     pprev = prev;
@@ -90,5 +86,4 @@ map.forEach((leaf, key) => {
   out[key] = words.map(({ word, count }) => [ word, count ]);
 });
 
-const compressed = zlib.deflateSync(JSON.stringify(out));
-console.log(JSON.stringify(compressed.toString('base64')));
+console.log(JSON.stringify(JSON.stringify(out)));

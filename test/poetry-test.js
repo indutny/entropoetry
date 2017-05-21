@@ -14,14 +14,14 @@ describe('EntroPoetry', () => {
 
     const str = p.stringify(buf);
     assert.equal(str, [
-      'accept did yer you lay',
-      'was get more work and play',
-      'of saddle blended fair',
-      'got my head when on air',
-      'in me as my tears my',
-      'avant her startled eye',
-      'consists not love me no',
-      'you\'ll find the kill har o'
+      'and tried its be not if',
+      'while all this is a stiff',
+      'rents all wept love framed since',
+      'my fall shall crush with rinse',
+      'to let a tear she\'d found',
+      'when said the only sound',
+      'of waters soothes remove',
+      'and not praise'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
   });
@@ -32,43 +32,17 @@ describe('EntroPoetry', () => {
                             'base64');
     const str = p.stringify(buf);
     assert.equal(str, [
-      'and live arose as from',
-      'still pack care was to come',
-      'came down with with way hast',
-      'love i know not how fast',
-      'i think that thou hast not',
-      'remembered may on spot',
-      'they but of sacra al',
-      'the child it is at val',
-      'it known thou'
+      'lieutenant let of long',
+      'dead i will come no throng',
+      'as letters all of its',
+      'condensed i my thoughts fits',
+      'and her hands he beat all',
+      'hell should rise with the ball',
+      'scarce whose not valley gods',
+      'home all day but the pods',
+      'your evil one giles him'
     ].join('\n'));
     assert.deepEqual(p.parse(str), buf);
-  });
-
-  it('should do reverse autocomplete', () => {
-    const p = new Poetry();
-    let list;
-
-    list = p.autocomplete('', null);
-    assert(list.some(([ entry ]) => entry === 'from'));
-
-    list = p.autocomplete('from', null);
-    assert(list.some(([ entry ]) => entry === 'as'));
-
-    list = p.autocomplete('as from', null);
-    assert(list.some(([ entry ]) => entry === 'arose'));
-
-    list = p.autocomplete('', 'from');
-    assert(list.some(([ entry ]) => entry === 'come'));
-
-    list = p.autocomplete('come', 'from');
-    assert(list.some(([ entry ]) => entry === 'to'));
-
-    list = p.autocomplete('upon the north south seas', null);
-    assert(!list);
-
-    list = p.autocomplete('seas', 'too');
-    assert(!list);
   });
 
   it('should stringify/parse random data', () => {
