@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const zlib = require('zlib');
 
 const dict = JSON.parse(fs.readFileSync(process.argv[2]).toString());
 const lines = fs.readFileSync(process.argv[3]).toString()
@@ -88,4 +89,6 @@ map.forEach((leaf, key) => {
 
   out[key] = words.map(({ word, count }) => [ word, count ]);
 });
-console.log(JSON.stringify(out));
+
+const compressed = zlib.deflateSync(JSON.stringify(out));
+console.log(JSON.stringify(compressed.toString('base64')));
