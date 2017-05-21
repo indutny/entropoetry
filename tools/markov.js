@@ -21,7 +21,7 @@ console.error('Number of unique lines: %d', uniqueLines.size);
 
 // All words
 const allWords = new Map();
-map.set(':', allWords);
+map.set('', allWords);
 
 function increment(map, word) {
   if (map.has(word))
@@ -59,10 +59,11 @@ uniqueLines.forEach((line) => {
       return;
     }
 
-    const submap = dig(map, pprev + ':' + prev);
-    if (pprev !== ':' && prev !== ':')
-      increment(allWords, word);
-    increment(submap, word);
+    if (pprev !== '' && prev !== '')
+      increment(dig(map, pprev + ':' + prev), word);
+    if (prev !== '')
+      increment(dig(map, prev), word);
+    increment(allWords, word);
 
     pprev = prev;
     prev = word;
