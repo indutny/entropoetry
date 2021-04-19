@@ -16,10 +16,7 @@
   ],
   "author": "Fedor Indutny <fedor@indutny.com> (http://darksi.de/)",
   "license": "MIT",
-  "dependencies": {
-    "bn.js": "^4.11.6"
-  },
   "devDependencies": {
-    "mocha": "^3.3.0"
+    "mocha": "^8.3.2"
   }
 }
